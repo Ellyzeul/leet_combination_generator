@@ -8,6 +8,9 @@ jobs:
     working_directory:  ~/project/leet_combination_generator
     steps:
       - run:
+          name: "Cloning repo"
+          command: git clone https://github.com/Ellyzeul/leet_combination_generator.git
+      - run:
           name: "Just printing"
           command: 
             for entry in /home/*; do echo "$entry"; done;
