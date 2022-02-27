@@ -9,7 +9,7 @@ jobs:
     steps:
       - run:
           name: "Setting up Composer"
-          command: composer install -n --preer-dist
+          command: composer install -n --prefer-dist
       - run:
           name: "Run Tests"
           command: ./vendor/bin/phpunit
