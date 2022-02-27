@@ -1,9 +1,6 @@
 version: 2.1
 
 
-orbs: 
-  phpunit: stockfiller/phpunit@1.1.0
-
 jobs:
   build:
     docker:
