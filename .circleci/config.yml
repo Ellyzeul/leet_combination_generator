@@ -8,6 +8,9 @@ jobs:
     working_directory: ~/leet_combination_generator
     steps:
       - run:
+          name: "Just printing"
+          command: ls
+      - run:
           name: "Setting up Composer"
           command: composer install -n --prefer-dist
       - run:
