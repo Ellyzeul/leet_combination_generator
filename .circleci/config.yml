@@ -9,7 +9,7 @@ jobs:
     steps:
       - run:
           name: "Just printing"
-          command: ls
+          command: cat composer.json
       - run:
           name: "Setting up Composer"
           command: composer install -n --prefer-dist
