@@ -5,7 +5,7 @@ jobs:
   build:
     docker:
         - image: cimg/php:8.0
-    working_directory:  ~/project/leet_combination_generator
+    working_directory:  ~/project
     steps:
       - run:
           name: "Cloning repo"
