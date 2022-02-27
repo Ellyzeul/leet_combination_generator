@@ -1,11 +1,14 @@
 version: 2.1
 
+
 orbs: 
   phpunit: stockfiller/phpunit@1.1.0
 
-
 jobs:
   build:
-    - run:
-        name: "Run Tests"
-        command: ./vendor/bin/phpunit
+    docker:
+        - image: cimg/php:8.0.3
+    steps:
+      - run:
+          name: "Run Tests"
+          command: ./vendor/bin/phpunit
