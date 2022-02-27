@@ -9,7 +9,11 @@ jobs:
     steps:
       - run:
           name: "Just printing"
-          command: cat composer.json
+          command: 
+            for entry in ~/*
+            do
+              echo "$entry"
+            done
       - run:
           name: "Setting up Composer"
           command: composer install -n --prefer-dist
