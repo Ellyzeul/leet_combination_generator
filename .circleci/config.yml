@@ -9,7 +9,9 @@ jobs:
     steps:
       - run:
           name: "Cloning repo"
-          command: git clone https://github.com/Ellyzeul/leet_combination_generator.git
+          command:
+            git clone https://github.com/Ellyzeul/leet_combination_generator.git
+            cd leet_combination_generator
       - run:
           name: "Just printing"
           command: 
