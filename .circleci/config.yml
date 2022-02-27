@@ -9,7 +9,7 @@ jobs:
     steps:
       - run:
           name: "Just printing"
-          command: for entry in /home/circleci/project/*; do echo "$entry"; done
+          command: for entry in /home/circleci/project/leet_combination_generator/*; do echo "$entry"; done
       - run:
           name: "Setting up Composer"
           command: composer install -n --prefer-dist
