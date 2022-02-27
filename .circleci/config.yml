@@ -15,7 +15,7 @@ jobs:
       - run:
           name: "Just printing"
           command: 
-            cat composer.json
+            cat composer.json;
             for entry in /home/*; do echo "$entry"; done;
             for entry in /home/circleci/*; do echo "$entry"; done;
             for entry in /home/circleci/project/*; do echo "$entry"; done;
