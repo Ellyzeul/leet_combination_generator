@@ -5,7 +5,6 @@ jobs:
   build:
     docker:
         - image: cimg/php:8.0.3
-    working_directory: ~/leet_combination_generator
     steps:
       - run:
           name: "Just printing"
