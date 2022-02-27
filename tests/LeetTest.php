@@ -15,16 +15,16 @@ class LeetTest extends TestCase
      */
     public function test_words_generation()
     {
-        $expected = [
-            "Ess3s daí",
-            "3$$es d@1",
-            "3sses da1"
-        ];
-        $response = Leet::generate("Esses daí");
+        // A 5 letters word varying from lowercase to uppercase should have: 2*2*2*2*2=32 combinations
+        $expected = ["teste", "Teste", "tEste", "TEste", "teSte", "TeSte", "tESte", "TESte", "tesTe",
+                    "TesTe", "tEsTe", "TEsTe", "teSTe", "TeSTe", "tESTe", "TESTe", "testE", "TestE",
+                    "tEstE", "TEstE", "teStE", "TeStE", "tEStE", "TEStE", "tesTE", "TesTE", "tEsTE",
+                    "TEsTE", "teSTE", "TeSTE", "tESTE", "TESTE"];
+        $response = Leet::generate("teste");
         $resLen = count($response);
 
         for($i=0; $i < $resLen; $i++) {
-            $this->assert(
+            $this->assertTrue(
                 in_array($response[$i], $expected)
             );
         }

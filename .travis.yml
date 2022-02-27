@@ -1,0 +1,8 @@
+language: php
+os: linux
+dist: ubuntu
+
+php:
+  - 8.0
+
+script: php vendor/bin/phpunit tests
