@@ -11,10 +11,10 @@ jobs:
           name: "Cloning repo"
           command:
             git clone https://github.com/Ellyzeul/leet_combination_generator.git;
-            cd /home/circleci/project/leet_combination_generator
       - run:
           name: "Just printing"
           command: 
+            cd /home/circleci/project/leet_combination_generator;
             cat composer.json;
             for entry in /home/*; do echo "$entry"; done;
             for entry in /home/circleci/*; do echo "$entry"; done;
@@ -22,7 +22,11 @@ jobs:
             for entry in /home/circleci/project/leet_combination_generator/*; do echo "$entry"; done;
       - run:
           name: "Setting up Composer"
-          command: composer install -n --prefer-dist
+          command:
+            cd /home/circleci/project/leet_combination_generator;
+            composer install -n --prefer-dist
       - run:
           name: "Run Tests"
-          command: ./vendor/bin/phpunit
+          command:
+            cd /home/circleci/project/leet_combination_generator;
+            ./vendor/bin/phpunit
