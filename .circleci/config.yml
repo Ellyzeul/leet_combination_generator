@@ -5,10 +5,11 @@ jobs:
   build:
     docker:
         - image: cimg/php:8.0.3
+    working_directory: ~/leet_combination_generator
     steps:
       - run:
           name: "Setting up Composer"
-          command: composer dump
+          command: composer install -n --preer-dist
       - run:
           name: "Run Tests"
           command: ./vendor/bin/phpunit
