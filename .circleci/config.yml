@@ -12,15 +12,6 @@ jobs:
           command:
             git clone https://github.com/Ellyzeul/leet_combination_generator.git;
       - run:
-          name: "Just printing"
-          command: 
-            cd /home/circleci/project/leet_combination_generator;
-            cat composer.json;
-            for entry in /home/*; do echo "$entry"; done;
-            for entry in /home/circleci/*; do echo "$entry"; done;
-            for entry in /home/circleci/project/*; do echo "$entry"; done;
-            for entry in /home/circleci/project/leet_combination_generator/*; do echo "$entry"; done;
-      - run:
           name: "Setting up Composer"
           command:
             cd /home/circleci/project/leet_combination_generator;
