@@ -5,8 +5,13 @@ jobs:
   build:
     docker:
         - image: cimg/php:8.0
+        - image: cimg/mysql:8.0
     working_directory:  ~/project
     steps:
+      - checkout
+      - run:
+          name: "Setting up MySQL"
+          command: sudo apt install -y mysql-client
       - run:
           name: "Cloning repo"
           command:
