@@ -21,11 +21,11 @@ class LeetTest extends TestCase
                     "tEstE", "TEstE", "teStE", "TeStE", "tEStE", "TEStE", "tesTE", "TesTE", "tEsTE",
                     "TEsTE", "teSTE", "TeSTE", "tESTE", "TESTE"];
         $response = Leet::generate("teste");
-        $resLen = count($response);
+        $expLen = count($expected);
 
-        for($i=0; $i < $resLen; $i++) {
+        for($i=0; $i < $expLen; $i++) {
             $this->assertTrue(
-                in_array($response[$i], $expected)
+                in_array($expected[$i], $response)
             );
         }
     }
