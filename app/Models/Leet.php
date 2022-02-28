@@ -3,37 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Leet extends Model
 {
-    private static array $similarSymbols = [
-        "a" => ["A"],
-        "b" => ["B"],
-        "c" => ["C"],
-        "d" => ["D"],
-        "e" => ["E"],
-        "f" => ["F"],
-        "g" => ["G"],
-        "h" => ["H"],
-        "i" => ["I"],
-        "j" => ["J"],
-        "l" => ["K"],
-        "l" => ["L"],
-        "m" => ["M"],
-        "n" => ["N"],
-        "o" => ["O"],
-        "p" => ["P"],
-        "q" => ["Q"],
-        "r" => ["R"],
-        "s" => ["S"],
-        "t" => ["T"],
-        "u" => ["U"],
-        "v" => ["V"],
-        "w" => ["W"],
-        "x" => ["X"],
-        "y" => ["Y"],
-        "z" => ["Z"]
-    ];
+    private static array $symbols;
 
     public static function generate(string $word)
     {
@@ -107,8 +81,18 @@ class Leet extends Model
 
     private static function getSymbol(string $ch, int $index)
     {
-        return isset(self::$similarSymbols[$ch][$index])
-            ? self::$similarSymbols[$ch][$index]
+        if(!isset(self::$symbols)) {
+            $result = DB::select("SELECT letter, symbol FROM symbols");
+
+            self::$symbols = [];
+            foreach ($result as $obj) {
+                if(!isset(self::$symbols[$obj->letter])) self::$symbols[$obj->letter] = [];
+                array_push(self::$symbols[$obj->letter], $obj->symbol);
+            }
+        }
+
+        return isset(self::$symbols[$ch][$index])
+            ? self::$symbols[$ch][$index]
             : null;
     }
 }
