@@ -5,20 +5,9 @@ jobs:
   build:
     docker:
         - image: cimg/php:8.0
-        - image: cimg/mysql:8.0
-          environment:
-            MYSQL_ROOT_PASSWORD: rootpw
-            MYSQL_DATABASE: $DB_DATABASE
-            MYSQL_USER: $DB_USERNAME
-            MYSQL_PASSWORD: $DB_PASSWORD
     working_directory:  ~/project
     steps:
       - checkout
-      - run:
-          name: "Setting up MySQL"
-          command:
-            sudo apt install mysql;
-            sudo mysql -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';CREATE DATABASE homestead;"
       - run:
           name: "Cloning repo"
           command:
@@ -28,11 +17,6 @@ jobs:
           command:
             cd /home/circleci/project/leet_combination_generator;
             composer install -n --prefer-dist
-      - run:
-          name: "Setting up migrations"
-          command:
-            cd /home/circleci/project/leet_combination_generator;
-            php artisan migrate:fresh --seed --force --env=production --no-interaction -vvv
       - run:
           name: "Run Tests"
           command:
