@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: "Setting up MySQL"
-          command: sudo apt install -y mysql-client
+          command: sudo mysql -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';CREATE DATABASE homestead;"
       - run:
           name: "Cloning repo"
           command:
