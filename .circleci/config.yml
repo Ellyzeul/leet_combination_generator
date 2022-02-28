@@ -12,6 +12,7 @@ jobs:
       - run:
           name: "Setting up MySQL"
           command:
+            sudo apt udpate;
             sudo apt install mysql-server;
             sudo mysql -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';CREATE DATABASE homestead;"
       - run:
