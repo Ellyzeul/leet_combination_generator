@@ -17,6 +17,11 @@ jobs:
             cd /home/circleci/project/leet_combination_generator;
             composer install -n --prefer-dist
       - run:
+          name: "Setting up migrations"
+          command:
+            cd /home/circleci/project/leet_combination_generator;
+            php artisan migrate:fresh --seed
+      - run:
           name: "Run Tests"
           command:
             cd /home/circleci/project/leet_combination_generator;
