@@ -20,7 +20,7 @@ jobs:
           name: "Setting up migrations"
           command:
             cd /home/circleci/project/leet_combination_generator;
-            php artisan migrate:fresh --seed
+            php artisan migrate:fresh --seed --force
       - run:
           name: "Run Tests"
           command:
