@@ -21,19 +21,11 @@ class Leet extends Model
         return $permutations;
     }
 
-    private static function permutate(string $word, int $str_index=0, int $symbol_index=0)
+    private static function permutate(string $word, int $str_index=0, int $symbol_index=0, bool $truncate=false, int $truncate_bytes=1)
     {
         $ch = mb_substr($word, $str_index, 1);
         $symbol = self::getSymbol($ch, $symbol_index);
-        if($ch == " ") {
-            $res1 = self::permutate($word, $str_index+1, $symbol_index+1);
-            $res2 = self::permutate($word, $str_index+2, 0);
-
-            $permutations = array_merge($res1, $res2);
-
-            return $permutations;
-        }
-        if($ch == "") return [];
+        if($ch == "" or $ch == " ") return [];
         if($symbol == null) {
             $permutations = self::permutate($word, $str_index+1, 0);
 
@@ -42,12 +34,15 @@ class Leet extends Model
         
         $permutations = [];
         $symbol_len = mb_strlen($symbol);
+        $new_truncate_bytes = strlen($symbol);
 
-        $new_word = substr_replace($word, $symbol, $str_index, 1);
+        $new_word = substr_replace($word, $symbol, $truncate ? $truncate_bytes : $str_index, 1);
+        $truncate_next = $symbol_len != $new_truncate_bytes;
+
         array_push($permutations, $new_word);
 
-        $res1 = self::permutate($word, $str_index, $symbol_index+1);
-        $res2 = self::permutate($new_word, $str_index+$symbol_len, 0);
+        $res1 = self::permutate($word, $str_index, $symbol_index+1, $truncate, $truncate_bytes);
+        $res2 = self::permutate($new_word, $str_index+$symbol_len, 0, $truncate_next, $new_truncate_bytes);
 
         $permutations = array_merge($permutations, $res2, $res1);
 
