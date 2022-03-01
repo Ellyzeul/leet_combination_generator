@@ -54,23 +54,6 @@ class Leet extends Model
         return $permutations;
     }
 
-    private static function getLetters(string $word)
-    {
-        $len = strlen($word);
-        $letters = [];
-        $counter = [];
-    
-        for($i = 0; $i < $len; $i++) {
-            $ch = $word[$i];
-            $num = isset($counter[$ch]) ? $counter[$ch] : 0;
-            $counter[$ch] = $num+1;
-    
-            if((!in_array($ch, $letters)) and $ch != ' ') array_push($letters, $ch);
-        }
-
-        return [$letters, $counter];
-    }
-
     private static function sanitize(string $word)
     {
         $asciiWord = strtolower(iconv("UTF-8", "ASCII//TRANSLIT", $word));

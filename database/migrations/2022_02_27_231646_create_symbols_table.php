@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('symbol', 50);
 
             $table->primary(['letter', 'symbol']);
+
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_bin';
         });
 
         DB::statement(

@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('word_missing', 255);
 
             $table->primary(['word_missing']);
+
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_bin';
         });
     }
 

@@ -48,6 +48,7 @@ class DatabaseSeeder extends Seeder
             ['letter' => 't', 'symbol' => 'T'],
             ['letter' => 't', 'symbol' => '+'],
             ['letter' => 'u', 'symbol' => 'U'],
+            ['letter' => 'u', 'symbol' => 'ú'],
             ['letter' => 'v', 'symbol' => 'V'],
             ['letter' => 'w', 'symbol' => 'W'],
             ['letter' => 'x', 'symbol' => 'X'],
